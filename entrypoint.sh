@@ -1,9 +1,11 @@
 #!/bin/bash
 
 set -e
+
 mkdir -p /root/.ssh
 echo $2 > /root/.ssh/id_ed25519
 echo -e "Host aur.archlinux.org\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
+chown -R root:root /root/.ssh
 chmod 700 /root/.ssh
 chmod 600 /root/.ssh/*
 sed -i "s#|#\n#g" /root/.ssh/id_ed25519
