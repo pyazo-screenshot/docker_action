@@ -17,6 +17,7 @@ makepkg --printsrcinfo > .SRCINFO
 
 git config --global user.email "jelena.dpk@gmail.com"
 git config --global user.name "JRubics"
-git add *
+git add .
 git commit -m "$REF version on aur"
-git push origin aur@aur.archlinux.org:pyazo-cli
+git remote add aur aur@aur.archlinux.org:pyazo-cli
+git push aur master
