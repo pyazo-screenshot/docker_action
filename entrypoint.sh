@@ -28,6 +28,7 @@ cp /tmp/.SRCINFO .
 
 git config --global user.email "jelena.dpk@gmail.com"
 git config --global user.name "JRubics"
+git fetch origin aur
 git checkout aur
 git add .
 git commit -m "$REF version on aur"
