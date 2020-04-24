@@ -11,9 +11,20 @@ while true; do
     break
   fi
 done
+
+cp -r /github/workspace /tmp/workspace
+cd /tmp/workspace
 sed -i "s/^sha256sums=('.\+/sha256sums=('$SHA256')/" PKGBUILD
 sed -i "s/^pkgver='.\+/pkgver='$REF'/" PKGBUILD
-makepkg --printsrcinfo > .SRCINFO
+chown -R user:user /tmp/workspace
+su -c "makepkg --printsrcinfo" user > .SRCINFO
+cd -
+cp /tmp/workspace/.SRCINFO .
+
+ls -la
+cat PKGBUILD
+cat .SRCINFO
+exit
 
 git config --global user.email "jelena.dpk@gmail.com"
 git config --global user.name "JRubics"
