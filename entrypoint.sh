@@ -26,14 +26,14 @@ su -c "makepkg --printsrcinfo" user > .SRCINFO
 cd -
 cp /tmp/.SRCINFO .
 
-cd /github
-mkdir asdf
-mv /github/workspace/.github /github/asdf
-cd -
 git config --global user.email "jelena.dpk@gmail.com"
 git config --global user.name "JRubics"
+git checkout aur
 git add .
 git commit -m "$REF version on aur"
 git remote add aur aur@aur.archlinux.org:pyazo-cli
-git push aur master
-mv /github/asdf.github /github/workspace
+git push aur aur:master
+
+git checkout master
+git rebase aur
+# Push master to github
