@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -Sy jq
+pacman -Sy --noconfirm jq
 REF=$(echo $1 | sed "s#\(refs/tags/\)\?v\?##")
 while true; do
   SHA256=$(curl -sSL https://pypi.org/pypi/pyazo-cli/json | jq -r ".releases[\"$REF\"][1].digests.sha256")
