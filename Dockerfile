@@ -1,8 +1,8 @@
 FROM archlinux:latest
 
-WORKDIR /data
+WORKDIR /github/workspace
 ENTRYPOINT ["/entrypoint.sh"]
 
-RUN pacman -Sy --noconfirm jq && chown 1000: /data
-USER 1000:1000
+RUN pacman -Sy --noconfirm jq binutils && useradd -m -U user && chown user:user /github/workspace
+USER user:user
 COPY entrypoint.sh /entrypoint.sh
