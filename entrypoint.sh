@@ -1,8 +1,11 @@
 #!/bin/bash
 
 set -e
-mkdir -p /home/user/.ssh
-echo $2 > /home/user/.ssh/id_ed25519
+mkdir -p /root/.ssh
+echo $2 > /root/.ssh/id_ed25519
+echo -e "Host aur.archlinux.org\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/*
 
 REF=$(echo $1 | sed "s#\(refs/tags/\)\?v\?##")
 while true; do
