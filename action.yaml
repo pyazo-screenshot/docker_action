@@ -1,0 +1,9 @@
+name: 'Make package'
+inputs:
+  tag:
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.tag }}
