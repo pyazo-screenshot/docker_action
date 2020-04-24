@@ -34,7 +34,8 @@ git add .
 git commit -m "$REF version on aur"
 git remote add aur aur@aur.archlinux.org:pyazo-cli
 git push aur aur:master
+git push origin aur
 
 git checkout master
 git rebase aur
-# Push master to github
+git push origin master
