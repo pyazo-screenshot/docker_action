@@ -15,5 +15,8 @@ sed -i "s/^sha256sums=('.\+/sha256sums=('$SHA256')/" PKGBUILD
 sed -i "s/^pkgver='.\+/pkgver='$REF'/" PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
 
+git config --global user.email "jelena.dpk@gmail.com"
+git config --global user.name "JRubics"
+git add *
 git commit -m "$REF version on aur"
 git push origin aur@aur.archlinux.org:pyazo-cli
