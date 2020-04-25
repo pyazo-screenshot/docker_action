@@ -47,6 +47,8 @@ pwd
 git push origin master
 
 cd ..
+git fetch origin master
+git checkout master
 git add .
 git commit -m "Update aur submodule to $REF"
 git push origin master
