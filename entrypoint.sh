@@ -10,6 +10,14 @@ chmod 700 /root/.ssh
 chmod 600 /root/.ssh/*
 sed -i "s#|#\n#g" /root/.ssh/id_ed25519
 
+git config --global user.email "jelena.dpk@gmail.com"
+git config --global user.name "JRubics"
+
+git submodule init
+git submodule update
+
+cd aur
+
 REF=$(echo $1 | sed "s#\(refs/tags/\)\?v\?##")
 while true; do
   SHA256=$(curl -sSL https://pypi.org/pypi/pyazo-cli/json | jq -r ".releases[\"$REF\"][1].digests.sha256")
@@ -28,16 +36,11 @@ su -c "makepkg --printsrcinfo" user > .SRCINFO
 cd -
 cp /tmp/.SRCINFO .
 
-git config --global user.email "jelena.dpk@gmail.com"
-git config --global user.name "JRubics"
-git fetch origin aur
-git checkout aur
 git add .
 git commit -m "$REF version on aur"
-git remote add aur aur@aur.archlinux.org:pyazo-cli
-git push aur aur:master
-git push origin aur
+git push origin master
 
-git checkout master
-git rebase aur
+cd ..
+git add .
+git commit "Update aur submodule for $REF"
 git push origin master
