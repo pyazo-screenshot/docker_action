@@ -17,6 +17,8 @@ git submodule init
 git submodule update
 
 cd aur
+git pull origin master
+git checkout master
 
 REF=$(echo $1 | sed "s#\(refs/tags/\)\?v\?##")
 while true; do
@@ -36,7 +38,6 @@ su -c "makepkg --printsrcinfo" user > .SRCINFO
 cd -
 cp /tmp/.SRCINFO .
 
-git checkout master
 git add .
 git commit -m "$REF version on aur"
 git log | head -n 12
@@ -47,5 +48,5 @@ git push origin master
 
 cd ..
 git add .
-git commit -m "Update aur submodule for $REF"
+git commit -m "Update aur submodule to $REF"
 git push origin master
