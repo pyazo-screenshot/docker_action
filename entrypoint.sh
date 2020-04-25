@@ -40,15 +40,4 @@ cp /tmp/.SRCINFO .
 
 git add .
 git commit -m "$REF version on aur"
-git log | head -n 12
-git status
-cat .SRCINFO
-pwd
-git push origin master
-
-cd ..
-git fetch origin master
-git checkout master
-git add .
-git commit -m "Update aur submodule to $REF"
 git push origin master
