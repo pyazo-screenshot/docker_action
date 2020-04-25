@@ -36,6 +36,7 @@ su -c "makepkg --printsrcinfo" user > .SRCINFO
 cd -
 cp /tmp/.SRCINFO .
 
+git checkout master
 git add .
 git commit -m "$REF version on aur"
 git push origin master
