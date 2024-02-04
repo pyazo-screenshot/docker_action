@@ -11,6 +11,7 @@ chmod 600 /root/.ssh/*
 sed -i "s#|#\n#g" /root/.ssh/id_ed25519
 
 git config --global --add safe.directory /github/workspace
+git config --global --add safe.directory /github/workspace/aur
 git config --global user.email "jelena.dpk@gmail.com"
 git config --global user.name "JRubics"
 
